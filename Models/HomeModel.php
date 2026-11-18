@@ -12,8 +12,8 @@ class HomeModel extends Query{
     }
     public function getProductos($id_categoria)
     {
-        $sql = "SELECT id, nombre, precio, cantidad, imagen FROM productos WHERE id_categoria = $id_categoria AND estado = 1 ORDER BY id DESC";
-        return $this->selectAll($sql);
+        $sql = "SELECT id, nombre, precio, cantidad, imagen FROM productos WHERE id_categoria = ? AND estado = 1 ORDER BY id DESC";
+        return $this->selectAll($sql, [$id_categoria]);
     }
 }
  
