@@ -7,13 +7,13 @@ class AdminModel extends Query{
     }
     public function getUsuario($correo)
     {
-        $sql = "SELECT * FROM usuarios WHERE correo = '$correo'";
-        return $this->select($sql);
+        $sql = "SELECT * FROM usuarios WHERE correo = ?";
+        return $this->select($sql, [$correo]);
     }
     public function getTotales($estado)
     {
-        $sql = "SELECT COUNT(*) AS total FROM pedidos WHERE proceso = $estado";
-        return $this->select($sql);
+        $sql = "SELECT COUNT(*) AS total FROM pedidos WHERE proceso = ?";
+        return $this->select($sql, [$estado]);
     }
     public function getProductos()
     {

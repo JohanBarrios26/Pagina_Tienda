@@ -23,8 +23,8 @@ class ClientesModel extends Query{
     }
     public function getToken($token)
     {
-        $sql = "SELECT * FROM clientes WHERE token = '$token'";
-        return $this->select($sql);
+        $sql = "SELECT * FROM clientes WHERE token = ?";
+        return $this->select($sql, [$token]);
     }
     public function actualizarVerify($id)
     {
@@ -40,8 +40,8 @@ class ClientesModel extends Query{
     }
     public function getVerificar($correo)
     {
-        $sql = "SELECT * FROM clientes WHERE correo = '$correo'";
-        return $this->select($sql);
+        $sql = "SELECT * FROM clientes WHERE correo = ?";
+        return $this->select($sql, [$correo]);
     }
 
     public function registrarPedido($id_transaccion, $monto, $estado, $fecha, $email,
@@ -61,8 +61,8 @@ class ClientesModel extends Query{
     }
     public function getProducto($id_producto)
     {
-        $sql = "SELECT * FROM productos WHERE id = $id_producto";
-        return $this->select($sql);
+        $sql = "SELECT * FROM productos WHERE id = ?";
+        return $this->select($sql, [$id_producto]);
     }
     public function registrarDetalle($producto, $precio, $cantidad, $id_pedido, $id_producto)
     {
@@ -78,18 +78,18 @@ class ClientesModel extends Query{
     }
     public function getPedidos($id_cliente)
     {
-        $sql = "SELECT * FROM pedidos WHERE id_cliente = $id_cliente";
-        return $this->selectAll($sql);
+        $sql = "SELECT * FROM pedidos WHERE id_cliente = ?";
+        return $this->selectAll($sql, [$id_cliente]);
     }
     public function getPedido($idPedido)
     {
-        $sql = "SELECT * FROM pedidos WHERE id = $idPedido";
-        return $this->select($sql);
+        $sql = "SELECT * FROM pedidos WHERE id = ?";
+        return $this->select($sql, [$idPedido]);
     }
     public function verPedidos($idPedido)
     {
-        $sql = "SELECT d.* FROM pedidos p INNER JOIN detalle_pedidos d ON p.id = d.id_pedido WHERE p.id = $idPedido";
-        return $this->selectAll($sql);
+        $sql = "SELECT d.* FROM pedidos p INNER JOIN detalle_pedidos d ON p.id = d.id_pedido WHERE p.id = ?";
+        return $this->selectAll($sql, [$idPedido]);
     }
 }
  

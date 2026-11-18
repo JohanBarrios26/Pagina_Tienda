@@ -7,8 +7,8 @@ class PedidosModel extends Query{
     }
     public function getPedidos($proceso)
     {
-        $sql = "SELECT * FROM pedidos WHERE proceso = $proceso";
-        return $this->selectAll($sql);
+        $sql = "SELECT * FROM pedidos WHERE proceso = ?";
+        return $this->selectAll($sql, [$proceso]);
     }
     public function actualizarEstado($proceso, $idPedido)
     {

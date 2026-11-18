@@ -7,8 +7,8 @@ class UsuariosModel extends Query{
     }
     public function getUsuarios($estado)
     {
-        $sql = "SELECT id, nombres, apellidos, correo, perfil FROM usuarios WHERE estado = $estado";
-        return $this->selectAll($sql);
+        $sql = "SELECT id, nombres, apellidos, correo, perfil FROM usuarios WHERE estado = ?";
+        return $this->selectAll($sql, [$estado]);
     }
     public function registrar($nombre, $apellido, $correo, $clave)
     {
@@ -18,8 +18,8 @@ class UsuariosModel extends Query{
     }
     public function verificarCorreo($correo)
     {
-        $sql = "SELECT correo FROM usuarios WHERE correo = '$correo' AND estado = 1";
-        return $this->select($sql);
+        $sql = "SELECT correo FROM usuarios WHERE correo = ? AND estado = 1";
+        return $this->select($sql, [$correo]);
     }
 
     public function eliminar($idUser)
@@ -31,8 +31,8 @@ class UsuariosModel extends Query{
 
     public function getUsuario($idUser)
     {
-        $sql = "SELECT id, nombres, apellidos, correo FROM usuarios WHERE id = $idUser";
-        return $this->select($sql);
+        $sql = "SELECT id, nombres, apellidos, correo FROM usuarios WHERE id = ?";
+        return $this->select($sql, [$idUser]);
     }
 
     public function modificar($nombre, $apellido, $correo, $id)

@@ -7,8 +7,8 @@ class ProductosModel extends Query{
     }
     public function getProductos($estado)
     {
-        $sql = "SELECT * FROM productos WHERE estado = $estado";
-        return $this->selectAll($sql);
+        $sql = "SELECT * FROM productos WHERE estado = ?";
+        return $this->selectAll($sql, [$estado]);
     }
     public function getCategorias()
     {
@@ -32,8 +32,8 @@ class ProductosModel extends Query{
 
     public function getProducto($idPro)
     {
-        $sql = "SELECT * FROM productos WHERE id = $idPro";
-        return $this->select($sql);
+        $sql = "SELECT * FROM productos WHERE id = ?";
+        return $this->select($sql, [$idPro]);
     }
 
     public function modificar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria, $id)
