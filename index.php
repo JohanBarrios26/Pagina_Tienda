@@ -1,5 +1,5 @@
 <?php
-require_once 'Config/Config.php';
+require_once 'config/config.php';
 $ruta = !empty($_GET['url']) ? $_GET['url'] : "home/index";
 $array = explode("/", $ruta);
 $controller = ucfirst($array[0]);
@@ -18,8 +18,8 @@ if (!empty($array[2])) {
         $parametro = trim($parametro, ",");
     }
 }
-require_once 'Config/App/Autoload.php';
-require_once 'Config/Helpers.php';
+require_once 'config/App/Autoload.php';
+require_once 'config/Helpers.php';
 $dirControllers = "Controllers/" . $controller . ".php";
 if (file_exists($dirControllers)) {
     require_once $dirControllers;
