@@ -46,6 +46,7 @@ Necesitas XAMPP (o cualquier servidor con PHP 8 y MySQL) y Composer.
    ```bash
    composer install
    ```
+   La carpeta `vendor/` no se sube al repositorio: se genera con este comando. Si Composer dice que falta la extensión *zip*, activa `extension=zip` en `php.ini` (en XAMPP: `C:\xampp\php\php.ini`).
 4. Copia `config/config.example.php` como `config/config.php` y completa tus datos: base de datos, `CLIENT_ID` de PayPal (modo sandbox) y credenciales SMTP.
 5. Abre `http://localhost/tienda-online/`.
 
